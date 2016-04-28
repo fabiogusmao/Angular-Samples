@@ -1,0 +1,37 @@
+<div class="form-group">
+    
+    <div class="input-group">
+        <input class="form-control" name="email" 
+            type="email" 
+            placeholder="Digite e-mails" 
+            ng-class="{'has-error': frm.email.$error.email}"
+            ng-model="me.email" 
+            ng-required="emails.length == 0"
+             />
+            
+            
+            
+        <span class="input-group-btn">
+            <button class="btn btn-secondary" 
+                title="adicionar e-mail" 
+                ng-disabled="!me.email"
+                ng-click="addEmail()"
+                >
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
+        </span>        
+    </div>
+    
+        <p class="error-message" ng-if="frm.email.$error.duplicate && frm.email.$dirty">E-mail já está na lista</p>
+    
+        <ul class="nav nav-pills">
+            
+            <li ng-repeat="email in emails"  
+                class="pill">
+                <a ng-click="removeEmail($index)">
+                {{email}} <i class="glyphicon glyphicon-remove-sign"></i></a>
+            </li>
+        </ul>
+    
+    
+</div>
